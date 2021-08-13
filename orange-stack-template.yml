@@ -46,8 +46,8 @@ resources:
           - tests
           - tracing
 
-  - name: pipeline
-    template: ori::template::132456-654654-654654-65464::asdaasd-654654-987987-987987 // REPOSITORY PIPELINE
+  - name: pipeline // FORMULA DE CRIAÇÂO DE PIPELINE
+    formula: ori::formula::132456-654654-654654-65464::asdaasd-654654-987987-987987 // REPOSITORY PIPELINE
     inputs:
       - label: 'Language/technology:'
         name: language
