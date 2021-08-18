@@ -1,4 +1,3 @@
-ori: ori::template::132456-654654-654654-65464::asdaasd-654654-987987-987987 // stack kotlin
 name: Stack Kotlin Micronaut
 description: Stack Kotlin Micronaut by Orange Stack
 inputs:
@@ -15,7 +14,8 @@ inputs:
     name: description
     type: text
 resources:
-  - name: scaffold
+  - step: scaffold
+    type: template
     template: ori::template::132456-654654-654654-65464::asdaasd-654654-987987-987987 // SCAFFOLD MICRONAUTE
     inputs:
       - label: 'Base name:'
@@ -46,8 +46,15 @@ resources:
           - tests
           - tracing
 
-  - name: pipeline // FORMULA DE CRIAÇÂO DE PIPELINE
-    formula: ori::formula::132456-654654-654654-65464::asdaasd-654654-987987-987987 // REPOSITORY PIPELINE
+# Inputs não mapeados serão usados os valores default, então só precisamos mapear esses inputs
+# caso quisermos que o usuário tenha possibilidade de editar esse valor.
+
+  - step: pipeline
+    type: formula
+    formula:
+      repo: https://github.com/orangestack-com/formulas-pipeline/
+      release: 0.0.5
+      command: os create pipeline
     inputs:
       - label: 'Language/technology:'
         name: language
@@ -64,16 +71,3 @@ resources:
           - swagger_json
           - swagger_yaml
           - terraform_aws
-
-  - name: notificacao
-    template: ori::template::132456-654654-654654-65464::asdaasd-654654-987987-987987 // Step Fictício
-    inputs:
-      - label: 'Unique name'
-        name: unique-name
-        value: {{resources.scaffold.outputs.unique_name}}
-        type: text
-
-      - label: 'Log language'
-        name: log-language
-        value: {{resources.scaffold.inputs.language}}
-        type: text
