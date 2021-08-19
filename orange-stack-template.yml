@@ -34,12 +34,7 @@ resources:
         itens:
           - aws-secret-manager
           - cache-redis
-          - dynamodb
-          - grpc-gateway
           - ikafka
-          - logging
-          - metrics
-          - mysql
           - postgres
           - rest
           - security
@@ -71,3 +66,61 @@ resources:
           - swagger_json
           - swagger_yaml
           - terraform_aws
+
+    - step: rds
+      type: template
+      template: ori::template::132456-654654-654654-65464::asdaasd-654654-987987-987987 // RDS
+      inputs:
+        - label: 'Name:'
+          name: base-name
+          type: text
+
+        - label: 'Name space:'
+          name: namespace
+          default: 'orange'
+          type: text
+
+        - label: 'Read Replica'
+          name: read-replica
+          type: bool
+          default: false
+          itens:
+            - true
+            - false
+
+        - label: 'Engine'
+          name: engine
+          type: bool
+          default: postgres
+          itens:
+            - postgres
+            - mysql
+
+    - step: redis
+      type: template
+      template: ori::template::132456-654654-654654-65464::asdaasd-654654-987987-987987 // REDIS
+      inputs:
+        - label: 'Name:'
+          name: base-name
+          type: text
+
+        - label: 'Name space:'
+          name: namespace
+          default: 'orange'
+          type: text
+
+        - label: 'Read Replica'
+          name: read-replica
+          type: bool
+          default: false
+          itens:
+            - true
+            - false
+
+        - label: 'Engine'
+          name: engine
+          type: bool
+          default: postgres
+          itens:
+            - postgres
+            - mysql
